@@ -7,7 +7,8 @@ if ($handle = opendir('mp3')) {
                         $audiobook = array();
                         $audiobook[ 'name' ] = str_replace( '.mp3', '', $file);
                         $audiobook[ 'url' ] = $_SERVER['HTTPS']?'https':'http' . '://' .
-                                $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT']. '/mp3/' . $file;
+                                $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'].
+                                dirname($_SERVER['PHP_SELF']) . '/mp3/' . $file;
                         $audiobook[ 'size' ] = filesize( 'mp3/' . $file );
 
                         $audiobooks[] = $audiobook;
